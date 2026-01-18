@@ -1,0 +1,17 @@
+services:
+  llm-lab:
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      # This maps your local folder to the container
+      # You can git commit from your host machine
+      - ./workspace:/workspace
+    # Uncomment if you have an NVIDIA GPU
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
