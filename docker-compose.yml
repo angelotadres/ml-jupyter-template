@@ -1,13 +1,15 @@
 services:
-  llm-lab:
+  jupyter:
     build: .
+    container_name: ml-jupyter
     ports:
       - "8888:8888"
     volumes:
-      # This maps your local folder to the container
-      # You can git commit from your host machine
       - ./workspace:/workspace
-    # Uncomment if you have an NVIDIA GPU
+
+    # ── GPU support (NVIDIA) ───────────────────────────────────────────────────
+    # Requires: nvidia-container-toolkit installed on the host.
+    # Uncomment the block below to enable GPU passthrough.
     # deploy:
     #   resources:
     #     reservations:
